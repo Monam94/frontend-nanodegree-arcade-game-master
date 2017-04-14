@@ -1,4 +1,4 @@
-"use strict";
+
 
 /**
  * Represents an enemy that the player must avoid.
