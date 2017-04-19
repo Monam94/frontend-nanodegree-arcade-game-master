@@ -155,7 +155,7 @@ function checkForCollisions() {
 
 }
 
-function randomize(min, max) {
+Enemy.prototype.randomize = function (min, max)  {
     return Math.floor((Math.random() * (min - max) + min));
 }
 
