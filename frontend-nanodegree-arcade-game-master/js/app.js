@@ -10,8 +10,8 @@ var Enemy = function(y) {
     // we've provided one for you to get started
     this.x = randomize(200, 1010);
     this.y = y;
-    this.WIDTH = 101;
-    this.HEIGHT = 83;
+    this.WIDTH = 50;
+    this.HEIGHT = 50;
     this.speed = randomize(300,500);
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
@@ -49,8 +49,8 @@ Enemy.prototype.render = function() {
 var Player = function() {
     this.x = 200;
     this.y = 300;
-    this.WIDTH = 50;
-    this.HEIGHT = 50;
+    this.WIDTH = 101;
+    this.HEIGHT = 83;
     this.sprite = 'images/char-boy.png';
 };
 
