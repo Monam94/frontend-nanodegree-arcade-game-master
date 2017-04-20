@@ -5,18 +5,22 @@
  *
  * @constructor
  */
+
 var Enemy = function(y) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
-    this.x = randomize(200, 1010);
+    this.x =this.randomize(200, 1010);
     this.y = y;
-    this.WIDTH = 50;
-    this.HEIGHT = 50;
-    this.speed = randomize(300,500);
+    this.WIDTH = 101;
+    this.HEIGHT = 83;
+    this.speed = this.randomize(300,500);
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
 };
+
+
+
 
 /**
  * Updates the enemy's position.
@@ -29,8 +33,8 @@ Enemy.prototype.update = function(dt) {
     // all computers.
     this.x = this.x + this.speed * dt;
     if (this.x > 1000) {
-        this.x = randomize(-200, -100);
-        this.speed = randomize(300,500);
+        this.x = this.randomize(-200, -100);
+        this.speed = this.randomize(300,500);
     }
 };
 
@@ -41,6 +45,10 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+Enemy.prototype.randomize = function (min, max)  {
+     Math.floor((Math.random() * (min - max) + min));
+}
+
 /**
  * This class represents the player character in the game.
  *
@@ -49,13 +57,15 @@ Enemy.prototype.render = function() {
 var Player = function() {
     this.x = 200;
     this.y = 300;
-    this.WIDTH = 101;
-    this.HEIGHT = 83;
+    this.WIDTH = 50;
+    this.HEIGHT = 50;
     this.sprite = 'images/char-boy.png';
 };
 
 Player.prototype.update = function() {
     checkForCollisions();
+    
+    
     if (this.y < 42) {
         this.y = 300;
         stats.setNewScore(1);
@@ -83,17 +93,17 @@ Player.prototype.render = function(dt) {
  */
 Player.prototype.handleInput = function(key) {
     if (key === 'left') {
-        if (this.x === 0) {
+        if (this.x < 0) {
             this.x = 0;
         } else {
-            this.x -= 101;
+            this.x -= 103;
         }
     }
     if (key === 'right') {
-        if (this.x === 909) {
+        if (this.x > 909) {
             this.x = 909;
         } else {
-            this.x += 101;
+            this.x += 103;
         }
     }
     if (key === 'down') {
@@ -112,10 +122,10 @@ Player.prototype.handleInput = function(key) {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-var enemy1 = new Enemy(50);
+var enemy1 = new Enemy(100);
 var enemy2 = new Enemy(120);
 var enemy3 = new Enemy(200);
-var enemy4 = new Enemy(50);
+var enemy4 = new Enemy(100);
 var enemy5 = new Enemy(120);
 var enemy6 = new Enemy(200);
 
@@ -136,6 +146,7 @@ document.addEventListener('keyup', function(e) {
 
 });
 
+
 function checkForCollisions() {
     for (var i = 0; i < allEnemies.length; i++) {
         if (player.x < allEnemies[i].x + allEnemies[i].WIDTH &&
@@ -155,9 +166,8 @@ function checkForCollisions() {
 
 }
 
-Enemy.prototype.randomize = function (min, max)  {
-    return Math.floor((Math.random() * (min - max) + min));
-}
+
+
 
 var stats = function() {
     var score = 0;
