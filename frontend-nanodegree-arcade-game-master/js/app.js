@@ -63,7 +63,7 @@ var Player = function() {
 };
 
 Player.prototype.update = function() {
-    checkForCollisions();
+  
     
     
     if (this.y < 42) {
@@ -92,6 +92,7 @@ Player.prototype.render = function(dt) {
  * @param key - a string representation of available player moves.
  */
 Player.prototype.handleInput = function(key) {
+    console.log(key, this.x);
     if (key === 'left') {
         if (this.x < 0) {
             this.x = 0;
@@ -100,8 +101,8 @@ Player.prototype.handleInput = function(key) {
         }
     }
     if (key === 'right') {
-        if (this.x > 1010) {
-            this.x = 1010;
+        if (this.x > 400) {
+            this.x = 300;
         } else {
             this.x += 103;
         }
