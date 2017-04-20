@@ -46,7 +46,7 @@ Enemy.prototype.render = function() {
 };
 
 Enemy.prototype.randomize = function (min, max)  {
-     Math.floor((Math.random() * (min - max) + min));
+ return Math.floor((Math.random() * (min - max) + min));
 }
 
 /**
@@ -100,8 +100,8 @@ Player.prototype.handleInput = function(key) {
         }
     }
     if (key === 'right') {
-        if (this.x > 909) {
-            this.x = 909;
+        if (this.x > 1010) {
+            this.x = 1010;
         } else {
             this.x += 103;
         }
@@ -122,10 +122,10 @@ Player.prototype.handleInput = function(key) {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-var enemy1 = new Enemy(100);
+var enemy1 = new Enemy(50);
 var enemy2 = new Enemy(120);
 var enemy3 = new Enemy(200);
-var enemy4 = new Enemy(100);
+var enemy4 = new Enemy(50);
 var enemy5 = new Enemy(120);
 var enemy6 = new Enemy(200);
 
